@@ -2,6 +2,7 @@ const app = require('express')();
 const http = require('http').Server(app);
 const path = require('path');
 const io = require('socket.io')(http);
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'chat.html'));
@@ -26,4 +27,4 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(3000, () => console.log('Server running...'));
+http.listen(PORT, () => console.log('Server running...'));
